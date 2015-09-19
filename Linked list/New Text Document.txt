@@ -1,0 +1,130 @@
+<div style="font-size: 13px;">
+
+[sourcecode language="cpp" title="compute sparse table"]
+class node
+{
+    public:
+    int data;
+    node *next;
+    node()
+    {
+        next=NULL;
+    }
+};
+[/sourcecode]
+</div>
+
+
+<div style="font-size: 13px;">
+
+[sourcecode language="cpp" title="Code: Append"]
+void append(int val)
+{
+    Size++;
+    node *temp=new node();
+    temp->data=val;
+    if(Head==NULL)
+    {
+        Head=tail=temp;
+        return;
+    }
+    tail->next=temp;
+    tail=temp;
+}
+[/sourcecode]
+</div>
+
+<div style="font-size: 13px;">
+[sourcecode language="cpp" title="code: Add element in specific position"]
+void add(int pos,int val)
+{
+    node *temp=new node();
+    temp->data=val;
+    if(pos==0)
+    {
+        Size++;
+        temp->next=Head;
+        Head=temp;
+        return;
+    }
+    node *left,*right;
+    right=Head;
+    int p=0;
+    while(right!=NULL and p<pos)
+    {
+        left=right;
+        right=right->next;
+        p++;
+    }
+    if(right!=NULL)
+    {
+        Size++;
+        left->next=temp;
+        left=temp;
+        left->next=right;
+    }
+}
+[/sourcecode]
+</div>
+
+
+<div style="font-size: 13px;">
+[sourcecode language="cpp" title="code: Delete element"]
+void Delete(int pos)
+{
+    node *temp,*left,*right;
+    if(pos==0)
+    {
+        Size--;
+        temp=Head;
+        Head=Head->next;
+        delete(temp);
+        return;
+    }
+    int p=0;
+    temp=Head;
+    while(temp!=NULL and p<pos)
+    {
+        left=temp;
+        temp=temp->next;
+        p++;
+    }
+    if(temp==NULL)return;
+    Size--;
+    if(temp->next==NULL)
+    {
+        left->next=NULL;
+        tail=left;
+        delete(temp);
+        return;
+    }
+    right=temp->next;
+    left->next=right;
+    delete(temp);
+}
+[/sourcecode]
+</div>
+
+
+<div style="font-size: 13px;">
+[sourcecode language="cpp" title="Show all element"]
+void show()
+{
+    node *temp=Head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+[/sourcecode]
+</div>
+
+
+<div style="font-size: 13px;">
+
+[sourcecode language="cpp" title="compute sparse table"]
+
+[/sourcecode]
+</div>
