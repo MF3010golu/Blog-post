@@ -43,7 +43,6 @@ void build_suffix_array(void)
         cout<<arr[i].indx<<' '<<text.substr(arr[i].indx)<<endl;
 }
 
-void build_LCP_array(void)
 {
     LCP[0] = 0;
     int n = text.size(), i, j, id1, id2;
